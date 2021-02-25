@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Liste Categories</title>
+</head>
+<body>
+<h2 align="center"> Liste des Categories de livre </h2>
+<div th:switch="${listBooks}">
+<div th:case="null">Pas de livre encore!!!</div>
+<div th:case="*">
+<table border="2">
+<thead>
+<tr>
+<th>Book ID</th>
+<th>Titre</th>
+<th>Auteur</th>
+<th>Categorie</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="book:${listBooks}">
+<td th:text="${book.id_book}"></td>
+<td th:text="${book.title}"></td>
+<td th:text="${book.author}"></td>
+<td th:text="${book.category.name}"></td>
+<td><a th:href="@{/books/showDetails/{id} (id=${book.id_book})}">Show Details</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<a th:href="@{/books/add}"> Ajouter </a>
+</div>
+</body>
+</html>

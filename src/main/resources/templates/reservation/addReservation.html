@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Reservation Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>Veillez inserer vos données Personnel pour confirmer votre Reservation</h1>
+
+<form action="#" th:action="@{'/account/add'}" th:object="${user}" method="post">
+<div class="form-group">
+	<div class="col-sm-9">
+    <label th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}" class="validation-message"></label>
+    <input type="text" th:field="*{fname}" placeholder="Prénom" class="form-control" />
+    </div>
+<div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+    <label th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}" class="validation-message"></label>
+    <input type="text" th:field="*{lname}" placeholder="Nom" class="form-control" />
+    </div>
+<div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+    <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
+    <input type="email" th:field="*{email}" placeholder="Email" class="form-control" />
+    </div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+    <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>
+    <input type="text" th:field="*{address}" placeholder="Address" class="form-control" />
+    </div>
+<div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+    <!-- <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label> -->
+    <input type="password" th:field="*{password}" placeholder="Password" class="form-control" />
+    </div>
+<div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+   <!--<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>  --> 
+    <input type="text" name="bookId" th:value="${book.id_book}" class="form-control" />
+    </div>
+<div>
+
+<div class="form-group">
+	<div class="col-sm-9">
+   <!--<label th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="validation-message"></label>  --> 
+    <input type="text" name="bookTitle" th:value="${book.title}" class="form-control" />
+    </div>
+<div>
+<div>
+<div class="form-group">
+    <div class="col-sm-9">
+	<button type="submit" class="btn btn-primary btn-block">Valider</button>
+</div>
+</div>
+</form>
+</body>
+</html>

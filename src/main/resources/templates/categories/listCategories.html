@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Liste Categories</title>
+</head>
+<body>
+<h2 align="center"> Liste des Categories de livre </h2>
+<div th:switch="${categories}">
+<div th:case="null">Pas encore de categorie!!!</div>
+<div th:case="*">
+<table border="2">
+<thead>
+<tr>
+<th>Category ID</th>
+<th>Label</th>
+<th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="category:${categories}">
+<td th:text="${category.id_category}"></td>
+<td th:text="${category.name}"></td>
+<td><a th:href="@{/categories/delete/{id} (id=${category.id_category})}">delete</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div>
+<a th:href="@{/categories/add}"> Ajouter </a>
+</div>
+</body>
+</html>

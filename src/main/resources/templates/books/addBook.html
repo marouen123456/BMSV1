@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Article</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+
+<body>
+    <div class="container my-5">
+        <h3> Add Article</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/books/add}" th:object="${book}" method="post" enctype="multipart/form-data">
+                        <div class="row">                   
+							<div class="form-group col-md-8">
+                                <label for="title" class="col-form-label">title</label> 
+                                <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="label"/> 
+                                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="author" class="col-form-label">author</label> 
+                                <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="author"/> 
+                                <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="description" class="col-form-label">description</label> 
+                                <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="description"/> 
+                               <!-- <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></span> --> 
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="price" class="col-form-label">Price</label> 
+                                <input type="text" th:field="*{price}" class="form-control" id="price" placeholder="Price"/> 
+                               <!-- <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span> -->  
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="isbn" class="col-form-label">isbn</label> 
+                                <input type="text" th:field="*{isbn}" class="form-control" id="isbn" placeholder="isbn"/> 
+                               <!-- <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="text-danger"></span> --> 
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="status" class="col-form-label">status</label> 
+                                <select th:field="*{status}" class="form-control">
+                                <option value="dispo" text="dispo">dispo</option>
+                                <option value="non dispo" text="non dispo">non dispo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                            <label for="cover" class="col-form-label">Picture</label>
+                            <input class="form-control" type="file" name="cover" multiple>
+      					 	</div>
+      					 	
+                            <div class="form-group col-md-8">
+								<label for="category" class="col-form-label">Categorie</label> 
+								<select name="categoryId" class="form-control">
+									<option th:each="category:${listCategories}" th:value="${category.id_category}" th:text="${category.name}"/>
+								</select>
+							</div>
+							
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value="Add book"/>
+                            </div>
+
+                            <div class="form-group col-md-8"></div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+<!--  <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Ajout livre</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+<!--  </head>
+<body>
+	<div class="container my-5">
+		<h3>Add Book</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-10">
+					<form action="#" th:action="@{/books/add}" th:object="${book}" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label for="title">Titre</label> 
+								<input type="text" name="title" th:field="*{title}" class="form-control" id="title" placeholder="title"/> 
+								<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="author">Auteur</label> 
+								<input type="text" name="author" th:field="*{author}" class="form-control" id="author" placeholder="author"/> 
+								<span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="description">Description</label> 
+								<input type="text" th:field="*{description}" id="description" placeholder="Description"/>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="price">Prix</label> 
+								<input type="text" th:field="*{price}" placeholder="Prix" />
+								<!-- <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span> -->
+							<!--  </div>
+
+							<div class="form-group col-md-8">
+								<label for="isbn">ISBN</label> 
+								<input type="text" th:field="*{isbn}" id="isbn" placeholder="ISBN" />
+								<!-- <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span> -->
+							<!-- </div>
+
+							<div class="form-group col-md-8">
+								<label for="status">Status</label> 
+								<input type="text" th:field="*{status}" id="status" placeholder="Status"/>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label for="cover" class="col-form-label">Image</label> 
+								<input class="form-control" th:field="*{cover}" type="file" name="cover" multiple/>
+							</div>
+
+							<div class="form-group col-md-8">
+								<label>Categorie</label> 
+								<select name="categoryId">
+									<option th:each="category:${listCategories}" th:value="${category.id_category}" th:text="${category.name}"></option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<input type="submit" class="btn btn-primary" value="Add Article"/>
+							</div>
+							<div class="form-group col-md-8"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html> -->

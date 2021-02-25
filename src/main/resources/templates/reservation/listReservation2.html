@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Role</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../css/shards.min.css"> -->
+</head>
+<body>
+<div>
+ 
+<div th:switch="${listResrevation}">
+<h2 th:case="null">Pas de Reservations encore!</h2>
+<div th:case="*">
+
+<table border="2">
+<thead>
+<tr>
+<!-- <th>ID</th> --><th>ID</th>
+<th> first Name</th>
+<th> last Name</th>
+<th> Email </th>
+<th> Adresse </th>
+<th> Book </th>
+</tr>
+</thead>
+<tbody>
+<h1 align="center"> La liste des reservations</h1>
+<tr th:each="r:${listResrevation}" th:if="${r.role.name}=='USER'">
+<td th:text="${r.id}"></td>
+<td th:text="${r.fname}"></td>
+<td th:text="${r.lname}"></td>
+<td th:text="${r.email}"></td>
+<td th:text="${r.address}"></td>
+<td th:text="${r.book.title}"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>
