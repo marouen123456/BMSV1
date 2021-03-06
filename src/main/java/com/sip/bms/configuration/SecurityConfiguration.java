@@ -47,14 +47,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers("/registration").permitAll() // accès pour tous users
 				
 				.antMatchers("/users/**").permitAll()
-				.antMatchers("/categories/**").hasAuthority("ADMIN") // autre option .hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
+				.antMatchers("/categories/**").permitAll() //.hasAuthority("ADMIN") // autre option .hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
 				.antMatchers("/books/list2").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
-				.antMatchers("/books/detail/**").hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
-				.antMatchers("/books/add").hasAnyAuthority("SUPER ADMIN", "ADMIN")
-				.antMatchers("/books/list").hasAnyAuthority("SUPER ADMIN", "ADMIN")
-				.antMatchers("/roles/**").hasAuthority("ADMIN")
-				.antMatchers("/account/add/**").hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
-				.antMatchers("/account/list2").hasAnyAuthority("SUPER ADMIN", "ADMIN")
+				.antMatchers("/books/detail/**").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
+				.antMatchers("/books/add").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN")
+				.antMatchers("/books/list").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN")
+				.antMatchers("/roles/**").permitAll() //.hasAuthority("ADMIN")
+				.antMatchers("/account/add/**").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
+				.antMatchers("/account/list2").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN")
 				
 				.anyRequest().authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire    
 				.loginPage("/login").failureUrl("/login?error=true") // fixer la page login

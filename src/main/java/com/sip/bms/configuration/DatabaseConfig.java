@@ -1,4 +1,4 @@
-/*
+
 package com.sip.bms.configuration;
 
 import com.zaxxer.hikari.*;
@@ -18,4 +18,3 @@ public class DatabaseConfig {
  }
 
 }
-*/
