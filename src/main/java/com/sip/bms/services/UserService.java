@@ -38,6 +38,7 @@ public class UserService {
 	public User findUserByEmail(String email) {
 		return userRepository.findUserByEmail(email);
 	}
+	
 	public void saveReservation(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(1);
@@ -47,11 +48,13 @@ public class UserService {
 	}
 	
 	public void saveUser(User user) {
+		
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(1);
-		Role userRole = roleRepository.findByName("USER");
+		Role userRole = roleRepository.findByName("ADMIN");
 		user.setRole(userRole);
 		long noBookId=8;
+		//final String title="fakeBookName";
 		Book book = bookRepository.findById(noBookId)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + noBookId));
 		user.setBook(book);

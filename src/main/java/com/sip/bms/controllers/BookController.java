@@ -57,6 +57,7 @@ public class BookController {
 		
 		return ("books/listBooks");
 	}
+	
 	@GetMapping("add")
 	//@ResponseBody
 	public String showAddBookForm( Model model) {
@@ -119,6 +120,7 @@ public class BookController {
 		if(listBooks.size()==0)
 			listBooks=null;
 		model.addAttribute("listBooks", listBooks);
+		//return ("books/2ndListBook");
 		return ("books/2ndListBook");
 	}
 }

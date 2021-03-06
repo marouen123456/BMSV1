@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Users List</title>
+</head>
+<body>
+<div>
+ 
+<div th:switch="${listUsers}">
+<h2 th:case="null">Pas d'utilisateurs encore!</h2>
+<div th:case="*">
+
+<table border="2">
+<thead>
+<tr>
+<!-- <th>ID</th> --><th>ID</th>
+<th> first Name</th>
+<th> last Name</th>
+<th> Email </th>
+<th> address </th>
+<th> role </th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="u:${listUsers}">
+<td th:text="${u.id}"></td>
+<td th:text="${u.fname}"></td>
+<td th:text="${u.lname}"></td>
+<td th:text="${u.email}"></td>
+<td th:text="${u.address}"></td>
+<td th:text="${u.role.name}"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

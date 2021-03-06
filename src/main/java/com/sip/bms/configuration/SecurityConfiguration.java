@@ -46,9 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers("/login").permitAll() // accès pour tous users
 				.antMatchers("/registration").permitAll() // accès pour tous users
 				
+				.antMatchers("/users/**").permitAll()
 				.antMatchers("/categories/**").hasAuthority("ADMIN") // autre option .hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
-				//.antMatchers("/Accueil").anonymous()
-				.antMatchers("/books/list2").hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
+				.antMatchers("/books/list2").permitAll() //.hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
 				.antMatchers("/books/detail/**").hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
 				.antMatchers("/books/add").hasAnyAuthority("SUPER ADMIN", "ADMIN")
 				.antMatchers("/books/list").hasAnyAuthority("SUPER ADMIN", "ADMIN")
@@ -56,9 +56,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				.antMatchers("/account/add/**").hasAnyAuthority("SUPER ADMIN", "ADMIN", "USER")
 				.antMatchers("/account/list2").hasAnyAuthority("SUPER ADMIN", "ADMIN")
 				
-				.anyRequest().authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire
+				.anyRequest().authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire    
 				.loginPage("/login").failureUrl("/login?error=true") // fixer la page login
-				
+			
 				.defaultSuccessUrl("/home") // page d'accueil après login avec succès
 				.usernameParameter("email") // paramètres d'authentifications login et password
 				.passwordParameter("password")

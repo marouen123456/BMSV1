@@ -25,8 +25,8 @@ import com.sip.bms.repositories.BookRepository;
 import com.sip.bms.repositories.CategoryRepository;
 import com.sip.bms.repositories.RoleRepository;
 import com.sip.bms.repositories.UserRepository;
-//import com.sip.bms.services.UserService;
 import com.sip.bms.services.UserService;
+//import com.sip.bms.services.UserService;
 
 @Controller
 @RequestMapping("/account/")
@@ -77,7 +77,6 @@ public class AccountController {
 		Book book = bookRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + id));
 		model.addAttribute("book", book);
-		//System.out.println(book);
 		return "reservation/addReservation";
 	}
 	
@@ -98,16 +97,8 @@ public class AccountController {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Book Id:" + bookId));
 		user.setBook(book);
 		sendEmail(user.getEmail(), user.getBook().getTitle());
-		saveReservation(user);
-		userRepository.save(user);
+		userService.saveReservation(user);
 		return "redirect:../books/list2";
-	}
-	
-	public void saveReservation(User user) {
-		user.setActive(1);
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		Role userRole = roleRepository.findByName("USER");
-		user.setRole(userRole);
 	}
 	
 	void sendEmail(String email, String bookTitle) {
@@ -119,5 +110,5 @@ public class AccountController {
 		 + " \n Bonne lecture");
 		 
 		 javaMailSender.send(msg);
-		 }
+	}
 }
