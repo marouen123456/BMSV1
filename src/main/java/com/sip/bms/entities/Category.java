@@ -50,7 +50,7 @@ public class Category {
 	
 	/********* One To Many ********/
 	
-	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="mycategory")
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="category")
 	private List<Book> books;
 
 	public List<Book> getBooks() {
