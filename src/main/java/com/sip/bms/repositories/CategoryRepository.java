@@ -12,6 +12,6 @@ import com.sip.bms.entities.Category;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
 
-	@Query("FROM Book b WHERE b.category.id_category = ?1")
-	List<Book> findBooksByCategory(int id);
+	//@Query("FROM Book b WHERE b.category.id_category = ?1")
+	//List<Book> findBooksByCategory(int id);
 }
