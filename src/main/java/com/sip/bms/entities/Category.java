@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table (name = "mycategory")
+@Table (name = "category")
 public class Category {
 
 	@Override
