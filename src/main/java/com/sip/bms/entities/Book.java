@@ -129,7 +129,7 @@ public Book() {}
 	
 /**** Many To One ****/
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_category", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Category category;

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table (name = "mycategory")
+@Table (name = "category")
 public class Category {
 
 	@Override
@@ -50,7 +50,7 @@ public class Category {
 	
 	/********* One To Many ********/
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="mycategory")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="category")
 	private List<Book> books;
 
 	public List<Book> getBooks() {
